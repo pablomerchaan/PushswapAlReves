@@ -12,7 +12,7 @@
 
 #include "pushswap.h"
 
-long	*transform(long *list, struct s_change actual, int length)
+int	*transform(int *list, struct s_change actual, int length)
 {
 	if (actual.type == 3)
 		list = transform_sb(list, actual.idx);

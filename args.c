@@ -46,6 +46,7 @@ int	solveargc(int argc, char **argv)
 
 struct s_l	makelist(int argc, char **argvtmp, struct s_l list, struct s_minmax m)
 {
+	int cum;
 	while (list.length < argc)
 	{
 		if (ft_atoi(argvtmp[list.length]) == '\0')
@@ -61,7 +62,13 @@ struct s_l	makelist(int argc, char **argvtmp, struct s_l list, struct s_minmax m
 			m.min = list.list[list.length];
 		list.length++;
 	}
-	list = addmin(list, m.min);
+cum = 0;
+  while (cum < list.length) {
+    printf("%i ", list.list[cum]);
+    cum++;
+  }
+  printf("\n");
+	//list = addmin(list, m.min);
 	if (checkrepetition(list) == NULL)
 	{
 		ft_printf("Error\n");
@@ -71,7 +78,7 @@ struct s_l	makelist(int argc, char **argvtmp, struct s_l list, struct s_minmax m
 	return (list);
 }
 
-void	freeboth(long *list, char **argvtmp)
+void	freeboth(int *list, char **argvtmp)
 {
 	free (list);
 	free (argvtmp);

@@ -12,11 +12,15 @@
 
 #include "pushswap.h"
 
-int	atoiaux(const char *str)
+int	ft_atoi(const char *str)
 {
-	int	i;
+	int		result;
+	int		sign;
+	int		i;
 
 	i = 0;
+	result = 0;
+	sign = 1;
 	while (str[i])
 	{
 		if (str[i] == ' ' || str[i] == '-' || (str[i] >= '0' && str[i] <= '9'))
@@ -24,18 +28,6 @@ int	atoiaux(const char *str)
 		else
 			return ('\0');
 	}
-	return (i);
-}
-
-int	ft_atoi(const char *str)
-{
-	long		result;
-	int		sign;
-	int		i;
-
-	result = 0;
-	sign = 1;
-	i = atoiaux(str);
 	if (*str == '-')
 	{
 		sign = -1;
@@ -46,13 +38,16 @@ int	ft_atoi(const char *str)
 		result = result * 10 + (*str - '0');
 		str++;
 	}
-	if (result > INT_MAX)
-		return ('\0');
 	return (result * sign);
 }
 
-int	gnaux(int c, int partition, long *list, int next)
+int	gnaux(int partition, int *list)
 {
+	int	next;
+	int	c;
+
+	c = 0;
+	next = partition - 1;
 	while (c != partition)
 	{
 		if (list[c] > list[next])
@@ -62,13 +57,13 @@ int	gnaux(int c, int partition, long *list, int next)
 	return (next);
 }
 
-int	get_next(long *list, int partition, int num)
+int	get_next(int *list, int partition, int num)
 {
 	int	c;
 	int	next;
 	int	current_next;
 
-	if (partition == 0)
+	if (partition == 0 || partition == 1)
 		return (0);
 	c = partition - 1;
 	next = 0;
@@ -82,8 +77,9 @@ int	get_next(long *list, int partition, int num)
 		}
 		c--;
 	}
+	c++;
 	if (current_next == INT_MAX)
-		next = gnaux(c, partition, list, next);
+		next = gnaux(partition, list);
 	return (next);
 }
 

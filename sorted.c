@@ -12,7 +12,7 @@
 
 #include "pushswap.h"
 
-int	sorted(long *list, int length)
+int	sorted(int *list, int length)
 {
 	int	c;
 
@@ -26,7 +26,7 @@ int	sorted(long *list, int length)
 	return (0);
 }
 
-long     *checkrepetition(struct s_l list)
+int     *checkrepetition(struct s_l list)
 {
         int     c;
         int     c2;
@@ -61,3 +61,4 @@ struct s_l	addmin(struct s_l list, int min)
 	}
 	return (list);
 }
+

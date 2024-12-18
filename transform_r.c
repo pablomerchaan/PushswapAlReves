@@ -12,7 +12,7 @@
 
 #include "pushswap.h"
 
-long	*transform_ra(long *list, int idx, int length)
+int	*transform_ra(int *list, int idx, int length)
 {
 	int	tmp;
 	int	c;
@@ -28,7 +28,7 @@ long	*transform_ra(long *list, int idx, int length)
 	return (list);
 }
 
-long	*transform_rb(long *list, int idx)
+int	*transform_rb(int *list, int idx)
 {
 	int	tmp;
 	int	c;
@@ -47,7 +47,7 @@ long	*transform_rb(long *list, int idx)
 	return (list);
 }
 
-long	*transform_rr(long *list, int idx, int length)
+int	*transform_rr(int *list, int idx, int length)
 {
 	transform_ra (list, idx, length);
 	transform_rb (list, idx);

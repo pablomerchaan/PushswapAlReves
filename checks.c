@@ -12,7 +12,7 @@
 
 #include "pushswap.h"
 
-struct s_rots	check_rrarrb(long *list, int length, int partition, int idx)
+struct s_rots	check_rrarrb(int *list, int length, int partition, int idx)
 {
 	struct s_rots	rot;
 	int				steps_a;
@@ -46,7 +46,7 @@ struct s_rots	check_rrarrb(long *list, int length, int partition, int idx)
 	return (rot);
 }
 
-struct s_rots	check_rarb(long *list, int partition, int idx)
+struct s_rots	check_rarb(int *list, int partition, int idx)
 {
 	struct s_rots	rot;
 	int				steps_a;
@@ -68,7 +68,7 @@ struct s_rots	check_rarb(long *list, int partition, int idx)
 	return (rot);
 }
 
-struct s_rots	check_rrarb(long *list, int length, int partition, int idx)
+struct s_rots	check_rrarb(int *list, int length, int partition, int idx)
 {
 	struct s_rots	rot;
 	int				steps_a;
@@ -94,7 +94,7 @@ struct s_rots	check_rrarb(long *list, int length, int partition, int idx)
 	return (rot);
 }
 
-struct s_rots	check_rarrb(long *list, int partition, int idx)
+struct s_rots	check_rarrb(int *list, int partition, int idx)
 {
 	struct s_rots	rot;
 	int				steps_a;
@@ -118,7 +118,7 @@ struct s_rots	check_rarrb(long *list, int partition, int idx)
 	return (rot);
 }
 
-struct s_rots	check(long *list, int length, int partition, int idx)
+struct s_rots	check(int *list, int length, int partition, int idx)
 {
 	struct s_rots	current_max;
 	struct s_rots	candidate;

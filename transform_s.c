@@ -12,7 +12,7 @@
 
 #include "pushswap.h"
 
-long	*transform_sa(long *list, int idx)
+int	*transform_sa(int *list, int idx)
 {
 	int	tmp;
 
@@ -22,7 +22,7 @@ long	*transform_sa(long *list, int idx)
 	return (list);
 }
 
-long	*transform_sb(long *list, int idx)
+int	*transform_sb(int *list, int idx)
 {
 	int	tmp;
 
@@ -32,7 +32,7 @@ long	*transform_sb(long *list, int idx)
 	return (list);
 }
 
-long	*transform_ss(long *list, int idx)
+int	*transform_ss(int *list, int idx)
 {
 	int	tmp;
 
