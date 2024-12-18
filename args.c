@@ -61,6 +61,7 @@ struct s_l	makelist(int argc, char **argvtmp, struct s_l list, struct s_minmax m
 			m.min = list.list[list.length];
 		list.length++;
 	}
+	list = addmin(list, m.min);
 	if (checkrepetition(list) == NULL)
 	{
 		ft_printf("Error\n");
@@ -70,7 +71,7 @@ struct s_l	makelist(int argc, char **argvtmp, struct s_l list, struct s_minmax m
 	return (list);
 }
 
-void	freeboth(int *list, char **argvtmp)
+void	freeboth(long *list, char **argvtmp)
 {
 	free (list);
 	free (argvtmp);

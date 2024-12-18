@@ -33,7 +33,6 @@ int	rotaux(struct s_l list, int round, int size_segment, int current_cost)
 			transformrot(list, goodrot);
 			emit_from_rots(goodrot);
 			list.partition += 1;
-			//printf("pb\n");
 			ints = completeints(ints, list, goodrot);
 		}
 		current_round++;
@@ -55,7 +54,7 @@ struct s_rots	auxaux(struct s_intsaux ints,
 		{
 			candidate = check(list.list, list.length, list.partition, ints.i);
 			current_cost = candidate.cost;
-			current_cost += lookahead(list, candidate, ints.current_max, 3);
+		//	current_cost += lookahead(list, candidate, ints.current_max, 10);
 			if (goodrot.type == -1 || current_cost < ints.good_cost)
 			{
 				goodrot = candidate;
@@ -93,7 +92,7 @@ int	emitlaststeps(struct s_intsrot intsr, int length, struct s_l list)
 	return (intsr.steps);
 }
 	
-int	rotations(int *lst, int min, int max, int length)
+int	rotations(long *lst, long min, long  max, int length)
 {
 	struct s_intsrot	intsr;
 	struct s_l			list;
@@ -125,25 +124,34 @@ int	main(int argc, char **argv)
 {
 	struct s_minmax	m;
 	struct s_l	list;
+	int			cum;
 	char	**argvtmp;
 
 	list.list = NULL;
+	if (argc < 1)
+		printf ("mensaje de error");
 	list.length = 0;
 	argvtmp = (char **)malloc(sizeof(char *) * (argc - 1));
-	m.max = INT_MIN;
-	m.min = INT_MAX;
+	m.max = LONG_MIN;
+	m.min = LONG_MAX;
 	argvtmp = solveargv(argc, argv, argvtmp);
 	argc = solveargc(argc, argv);
-	list.list = malloc (sizeof(int) * (argc));
+	list.list = malloc (sizeof(long) * (argc));
 	list = makelist(argc, argvtmp, list, m);
-	if (list.list == NULL)
+	if (sorted(list.list, list.length == 0) || list.list == NULL)
 	{
-		freeboth(list.list, argvtmp);
+		freeboth(list.list, argvtmp);	
 		return (0);
 	}
-	if (sorted(list.list, list.length) == 0)
-		return (0);
-	rotations (list.list, m.min, m.max, list.length);
-	freeboth(list.list, argvtmp);
+	cum = rotations (list.list, m.min, m.max, list.length);
+ /*
+ cum = 0;
+  while (cum < list.length) {
+    printf("%ld ", list.list[cum]);
+    cum++;
+  }
+  printf("\n");
+  */
+	freeboth(list.list, argvtmp);	
 	return (0);
 }

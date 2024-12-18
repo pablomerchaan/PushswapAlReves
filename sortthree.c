@@ -12,7 +12,7 @@
 
 #include "pushswap.h"
 
-int	sortaux(int *list, int length, int c)
+int	sortaux(long *list, int length, int c)
 {
 	if (list[c] < list[c + 1])
 	{
@@ -22,7 +22,7 @@ int	sortaux(int *list, int length, int c)
 		{
 			transform_rra(list, 0, length);
 			emit_step(8);
-			if (list[c] > list[c + 1])
+			if (list[c] < list[c + 1])
 			{
 				transform_sa (list, length);
 				emit_step(2);
@@ -32,14 +32,15 @@ int	sortaux(int *list, int length, int c)
 	}
 	return (c);
 }
-void	sortaux2(int *list, int length)
+
+void	sortaux2(long *list, int length)
 {
 	if (list[2] < list[1])
 	{
 		transform_sa (list, length);
 		emit_step(2);
 		transform_ra (list, 0, length);
-		emit_step(8);
+		emit_step(5);
 	}
 	else if (list[2] < list[0])
 	{
@@ -50,7 +51,7 @@ void	sortaux2(int *list, int length)
 	}
 }
 
-int	sortthree(int *list, int length)
+int	sortthree(long *list, int length)
 {
 	int	c;
 

@@ -33,7 +33,7 @@ struct s_l	maketmpl(struct s_l list, struct s_rots rot, int sw)
 
 struct s_l	completetmpl(struct s_l tmpl, struct s_l list)
 {
-tmpl.length = list.length;
+	tmpl.length = list.length;
 	tmpl.partition = list.partition;
 	return (tmpl);
 }
@@ -47,7 +47,7 @@ int	lookahead(struct s_l list, struct s_rots rot, double current_min, int depth)
 	intslk.cost = 0;
 	tmpl = maketmpl(list, rot, 0);
 	intslk.current_depth = 1;
-	while (intslk.current_depth <= depth && tmpl.partition < list.length)
+	while (intslk.current_depth <= depth && list.partition < list.length)
 	{
 		intslk.i = list.partition;
 		intslk.good_cost = INT_MAX;
@@ -59,7 +59,7 @@ int	lookahead(struct s_l list, struct s_rots rot, double current_min, int depth)
 			tmpl = completetmpl(tmpl, list);
 			transformrot(tmpl, goodrot);
 			intslk.cost += goodrot.cost;
-			tmpl.partition += 1;
+			list.partition += 1;
 		}
 		intslk.current_depth += 1;
 	}
@@ -79,7 +79,7 @@ struct s_intslk	lkaux2(double c_m, int d, struct s_intslk ints, struct s_l tmpl)
 		{
 			candidate = check(tmpl.list, tmpl.length, tmpl.partition, ints.i);
 			ints.current_cost = candidate.cost;
-			if (d > 1)
+			if (d > 1 && d == -1)
 			{
 				ints.current_cost += lookahead(tmpl, candidate, c_m, d - 1);
 			}
@@ -106,7 +106,7 @@ struct s_rots	lkaux1(double c_m, int d, struct s_intslk ints, struct s_l tmpl)
 		{
 			candidate = check(tmpl.list, tmpl.length, tmpl.partition, ints.i);
 			ints.current_cost = candidate.cost;
-			if (d > 1)
+			if (d > 1 && d == -1)
 			{
 				ints.current_cost += lookahead(tmpl, candidate, c_m, d - 1);
 			}

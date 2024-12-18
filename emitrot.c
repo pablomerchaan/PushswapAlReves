@@ -86,6 +86,5 @@ void	emit_from_rots(struct s_rots rot)
 		do_print (5, 9, rot.steps_a, rot.steps_b);
 	if (rot.type == 3)
 		do_print (8, 6, rot.steps_a, rot.steps_b);
-
-  emit_step(1);
+	emit_step(0);
 }

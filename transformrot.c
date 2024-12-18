@@ -44,7 +44,7 @@ int	getcomp_2(struct s_rots rot)
 	return (result);
 }
 
-int	*do_rotations(struct s_l list, struct s_rots rot, int type_1, int type_2)
+long	*do_rotations(struct s_l list, struct s_rots rot, int type_1, int type_2)
 {
 	struct s_change	rotation;
 	int				c;
@@ -72,7 +72,7 @@ int	*do_rotations(struct s_l list, struct s_rots rot, int type_1, int type_2)
 	return (list.list);
 }
 
-int	*transformrot(struct s_l list, struct s_rots rot)
+long	*transformrot(struct s_l list, struct s_rots rot)
 {
 	if (rot.type == 0)
 	{
