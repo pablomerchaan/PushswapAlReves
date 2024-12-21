@@ -6,7 +6,7 @@
 /*   By: paperez- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 12:50:45 by paperez-          #+#    #+#             */
-/*   Updated: 2024/12/21 17:19:40 by paperez-         ###   ########.fr       */
+/*   Updated: 2024/12/21 17:13:15 by paperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,7 @@ int	*checkrepetition(struct s_l list)
 		{
 			if (list.list[c] == list.list[c2])
 			{
-				list.list = NULL;
-				return (list.list);
+				return (NULL);
 			}
 			else
 				c2--;

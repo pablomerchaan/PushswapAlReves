@@ -6,7 +6,7 @@
 /*   By: paperez- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 18:17:02 by paperez-          #+#    #+#             */
-/*   Updated: 2024/12/21 16:27:06 by paperez-         ###   ########.fr       */
+/*   Updated: 2024/12/21 16:48:35 by paperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,25 +49,25 @@ int	lookahead(struct s_l list, struct s_rots rot, double current_min, int depth)
 	intslk.current_depth = 1;
 	while (intslk.current_depth <= depth && tmpl.partition < tmpl.length)
 	{
-		intslk.i = list.partition;
+		intslk.i = tmpl.partition;
 		intslk.good_cost = INT_MAX;
-		tmpl = completetmpl (tmpl, list);
-		goodrot = lkaux1(current_min, depth, intslk, tmpl);
-		intslk = lkaux2(current_min, depth, intslk, tmpl);
+		goodrot = lkaux1(current_min, intslk, tmpl);
+		intslk = lkaux2(current_min, intslk, tmpl);
 		if (goodrot.type != -1)
 		{
-			tmpl = completetmpl(tmpl, list);
 			transformrot(tmpl, goodrot);
 			intslk.cost += goodrot.cost;
-			list.partition += 1;
+			tmpl.partition += 1;
 		}
+		else
+			break ;
 		intslk.current_depth += 1;
 	}
 	free (tmpl.list);
 	return (intslk.cost);
 }
 
-struct s_intslk	lkaux2(double c_m, int d, struct s_intslk ints, struct s_l tmpl)
+struct s_intslk	lkaux2(double c_m, struct s_intslk ints, struct s_l tmpl)
 {
 	struct s_rots	candidate;
 	struct s_rots	goodrot;
@@ -79,10 +79,6 @@ struct s_intslk	lkaux2(double c_m, int d, struct s_intslk ints, struct s_l tmpl)
 		{
 			candidate = check(tmpl.list, tmpl.length, tmpl.partition, ints.i);
 			ints.current_cost = candidate.cost;
-			if (d > 1 && d == -1)
-			{
-				ints.current_cost += lookahead(tmpl, candidate, c_m, d - 1);
-			}
 			if (goodrot.type == -1 || ints.current_cost < ints.good_cost)
 			{
 				goodrot = candidate;
@@ -94,7 +90,7 @@ struct s_intslk	lkaux2(double c_m, int d, struct s_intslk ints, struct s_l tmpl)
 	return (ints);
 }
 
-struct s_rots	lkaux1(double c_m, int d, struct s_intslk ints, struct s_l tmpl)
+struct s_rots	lkaux1(double c_m, struct s_intslk ints, struct s_l tmpl)
 {
 	struct s_rots	candidate;
 	struct s_rots	goodrot;
@@ -106,10 +102,6 @@ struct s_rots	lkaux1(double c_m, int d, struct s_intslk ints, struct s_l tmpl)
 		{
 			candidate = check(tmpl.list, tmpl.length, tmpl.partition, ints.i);
 			ints.current_cost = candidate.cost;
-			if (d > 1 && d == -1)
-			{
-				ints.current_cost += lookahead(tmpl, candidate, c_m, d - 1);
-			}
 			if (goodrot.type == -1 || ints.current_cost < ints.good_cost)
 			{
 				goodrot = candidate;

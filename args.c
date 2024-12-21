@@ -6,7 +6,7 @@
 /*   By: paperez- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 14:43:01 by paperez-          #+#    #+#             */
-/*   Updated: 2024/12/21 16:18:37 by paperez-         ###   ########.fr       */
+/*   Updated: 2024/12/21 17:19:06 by paperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ struct s_intsaux	completeints(struct s_intsaux ints,
 
 char	**solveargv(int argc, char **argv)
 {
-	int	c;
-	char **argvtmp;
+	char	**argvtmp;
+	int		c;
 
 	c = 0;
 	if (argc == 2)
@@ -69,6 +69,7 @@ struct s_l	makelist(int argc, char **argvtmp,
 		{
 			ft_printf("Error\n");
 			free (list.list);
+			list.list = NULL;
 			return (list);
 		}
 		list.list[list.length] = ft_atoi(argvtmp[list.length]);
@@ -82,6 +83,7 @@ struct s_l	makelist(int argc, char **argvtmp,
 	{
 		ft_printf("Error\n");
 		free (list.list);
+		list.list = NULL;
 		return (list);
 	}
 	return (list);

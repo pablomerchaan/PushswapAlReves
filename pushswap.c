@@ -6,7 +6,7 @@
 /*   By: paperez- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 17:25:49 by paperez-          #+#    #+#             */
-/*   Updated: 2024/12/21 16:19:47 by paperez-         ###   ########.fr       */
+/*   Updated: 2024/12/21 16:56:15 by paperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ struct s_rots	auxaux(struct s_intsaux ints,
 		{
 			candidate = check(list.list, list.length, list.partition, ints.i);
 			current_cost = candidate.cost;
-			current_cost += lookahead(list, candidate, ints.current_max, 10);
+			current_cost += lookahead(list, candidate, ints.current_max, 100);
 			if (goodrot.type == -1 || current_cost < ints.good_cost)
 			{
 				goodrot = candidate;
@@ -122,18 +122,16 @@ int	rotations(int *lst, int min, int max, int length)
 
 int	main(int argc, char **argv)
 {
-	int	sw;
 	struct s_minmax	m;
 	struct s_l		list;
 	char			**argvtmp;
+	int				sw;
 
-	sw = 0;
-	if (argc == 2)
-		sw = 1;
+	sw = getsw(argc);
 	list.list = NULL;
+	list.length = 0;
 	if (argc < 2)
 		return (0);
-	list.length = 0;
 	m.max = INT_MIN;
 	m.min = INT_MAX;
 	argvtmp = solveargv(argc, argv);

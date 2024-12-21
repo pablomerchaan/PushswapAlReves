@@ -6,7 +6,7 @@
 /*   By: paperez- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 18:58:52 by paperez-          #+#    #+#             */
-/*   Updated: 2024/12/21 16:10:19 by paperez-         ###   ########.fr       */
+/*   Updated: 2024/12/21 16:58:31 by paperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,11 @@ struct s_intsaux	completeints(struct s_intsaux ints, struct s_l list,
 struct s_rots		minrot(struct s_rots rot1, struct s_rots rot2);
 struct s_rots		check(int *list, int length, int partition, int idx);
 struct s_minmax		geetminmax(struct s_l list);
-struct s_rots		lkaux1( double current_min, int depth,
+struct s_rots		lkaux1( double current_min,
 						struct s_intslk intslk, struct s_l tmpl);
 struct s_rots		auxaux(struct s_intsaux ints, struct s_l list,
 						struct s_rots goodrot, int current_cost);
-struct s_intslk		lkaux2(double current_min, int depth,
+struct s_intslk		lkaux2(double current_min,
 						struct s_intslk intslk, struct s_l tmpl);
 void				do_print(int type_1, int type_2, int comp_1, int comp_2);
 void				emit_step(int type);
@@ -139,6 +139,7 @@ int					sortthree(int *list, int length);
 int					sorted(int *list, int length);
 int					howmany(char **argv);
 int					word_cnt(const char *s, char c);
+int					getsw(int argc);
 char				**ft_split(char const *s, char c);
 char				**solveargv(int argc, char **argv);
 size_t				ft_strlen(const char *s);
