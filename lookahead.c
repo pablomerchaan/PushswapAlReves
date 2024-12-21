@@ -6,7 +6,7 @@
 /*   By: paperez- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 18:17:02 by paperez-          #+#    #+#             */
-/*   Updated: 2024/12/10 13:17:24 by paperez-         ###   ########.fr       */
+/*   Updated: 2024/12/21 16:27:06 by paperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	lookahead(struct s_l list, struct s_rots rot, double current_min, int depth)
 	intslk.cost = 0;
 	tmpl = maketmpl(list, rot, 0);
 	intslk.current_depth = 1;
-	while (intslk.current_depth <= depth && list.partition < list.length)
+	while (intslk.current_depth <= depth && tmpl.partition < tmpl.length)
 	{
 		intslk.i = list.partition;
 		intslk.good_cost = INT_MAX;

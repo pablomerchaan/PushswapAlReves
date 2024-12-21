@@ -6,7 +6,7 @@
 /*   By: paperez- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 17:25:49 by paperez-          #+#    #+#             */
-/*   Updated: 2024/12/19 15:57:20 by paperez-         ###   ########.fr       */
+/*   Updated: 2024/12/21 16:19:47 by paperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,28 +122,31 @@ int	rotations(int *lst, int min, int max, int length)
 
 int	main(int argc, char **argv)
 {
+	int	sw;
 	struct s_minmax	m;
 	struct s_l		list;
 	char			**argvtmp;
 
+	sw = 0;
+	if (argc == 2)
+		sw = 1;
 	list.list = NULL;
 	if (argc < 2)
 		return (0);
 	list.length = 0;
-	argvtmp = (char **)malloc(sizeof(char *) * (argc - 1));
 	m.max = INT_MIN;
 	m.min = INT_MAX;
-	argvtmp = solveargv(argc, argv, argvtmp);
+	argvtmp = solveargv(argc, argv);
 	argc = solveargc(argc, argv);
 	list.list = malloc (sizeof(int) * (argc));
 	list = makelist(argc, argvtmp, list, m);
 	if (list.list == NULL || sorted(list.list, list.length) == 0)
 	{
-		freeboth(list.list, argvtmp);
+		free(argvtmp);
 		return (0);
 	}
 	m = geetminmax(list);
 	rotations (list.list, m.min, m.max, list.length);
-	freeboth (list.list, argvtmp);
+	freeboth (list.list, argvtmp, sw);
 	return (0);
 }

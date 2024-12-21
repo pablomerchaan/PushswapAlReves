@@ -6,7 +6,7 @@
 /*   By: paperez- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 18:58:52 by paperez-          #+#    #+#             */
-/*   Updated: 2024/12/19 15:53:51 by paperez-         ###   ########.fr       */
+/*   Updated: 2024/12/21 16:10:19 by paperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ struct s_intslk		lkaux2(double current_min, int depth,
 void				do_print(int type_1, int type_2, int comp_1, int comp_2);
 void				emit_step(int type);
 void				emit_from_rots(struct s_rots rot);
-void				freeboth(int *list, char **argvtmp);
+void				freeboth(int *list, char **argvtmp, int sw);
 struct s_l			maketmpl(struct s_l list, struct s_rots rot, int sw);
 struct s_l			completetmpl(struct s_l tmpl, struct s_l list);
 int					*transformrot(struct s_l list, struct s_rots rot);
@@ -140,7 +140,7 @@ int					sorted(int *list, int length);
 int					howmany(char **argv);
 int					word_cnt(const char *s, char c);
 char				**ft_split(char const *s, char c);
-char				**solveargv(int argc, char **argv, char **argvtmp);
+char				**solveargv(int argc, char **argv);
 size_t				ft_strlen(const char *s);
 struct s_l			makelist(int argc, char **argvtmp,
 						struct s_l list, struct s_minmax m);

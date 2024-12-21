@@ -6,7 +6,7 @@
 /*   By: paperez- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 14:43:01 by paperez-          #+#    #+#             */
-/*   Updated: 2024/12/19 14:43:46 by paperez-         ###   ########.fr       */
+/*   Updated: 2024/12/21 16:18:37 by paperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,10 @@ struct s_intsaux	completeints(struct s_intsaux ints,
 	return (ints);
 }
 
-char	**solveargv(int argc, char **argv, char **argvtmp)
+char	**solveargv(int argc, char **argv)
 {
 	int	c;
+	char **argvtmp;
 
 	c = 0;
 	if (argc == 2)
@@ -39,11 +40,13 @@ char	**solveargv(int argc, char **argv, char **argvtmp)
 	else
 	{
 		c = 1;
+		argvtmp = (char **)malloc(sizeof(char *) * (argc));
 		while (c < argc)
 		{
 			argvtmp[c - 1] = argv[c];
 			c++;
 		}
+		argvtmp[c - 1] = NULL;
 	}
 	return (argvtmp);
 }
@@ -65,7 +68,7 @@ struct s_l	makelist(int argc, char **argvtmp,
 		if (checkerrors(argvtmp[list.length]) == 1)
 		{
 			ft_printf("Error\n");
-			list.list = NULL;
+			free (list.list);
 			return (list);
 		}
 		list.list[list.length] = ft_atoi(argvtmp[list.length]);
@@ -78,14 +81,25 @@ struct s_l	makelist(int argc, char **argvtmp,
 	if (checkrepetition(list) == NULL)
 	{
 		ft_printf("Error\n");
-		list.list = NULL;
+		free (list.list);
 		return (list);
 	}
 	return (list);
 }
 
-void	freeboth(int *list, char **argvtmp)
+void	freeboth(int *list, char **argvtmp, int sw)
 {
+	int	c;
+
+	c = 0;
+	if (sw == 1)
+	{
+		while (argvtmp[c])
+		{
+			free(argvtmp[c]);
+			c++;
+		}
+	}
 	free (list);
 	free (argvtmp);
 }
