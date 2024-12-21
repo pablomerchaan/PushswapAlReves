@@ -6,7 +6,7 @@
 /*   By: paperez- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 19:07:57 by paperez-          #+#    #+#             */
-/*   Updated: 2024/11/26 19:31:33 by paperez-         ###   ########.fr       */
+/*   Updated: 2024/12/19 14:39:17 by paperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,8 @@ int	*transform_rb(int *list, int idx)
 	int	tmp;
 	int	c;
 
-  if (idx == 0)
-    return (list);
-
+	if (idx == 0)
+		return (list);
 	tmp = list[idx - 1];
 	c = idx - 1;
 	while (c > 0)

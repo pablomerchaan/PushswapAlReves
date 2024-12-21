@@ -6,7 +6,7 @@
 /*   By: paperez- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 18:51:30 by paperez-          #+#    #+#             */
-/*   Updated: 2024/11/28 16:52:11 by paperez-         ###   ########.fr       */
+/*   Updated: 2024/12/19 14:35:03 by paperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,14 @@ struct s_rots	check_rrarrb(int *list, int length, int partition, int idx)
 	int				next;
 
 	next = get_next(list, partition, list[idx]);
-  if (idx == partition)
-  {
-    steps_a = 0;
-  }
-  else
-  {
-	  steps_a = length - idx;
-  }
-  if (next == partition - 1)
-  {
-    steps_b = 0;
-  }
-  else
-  {
-	  steps_b = next + 1;
-  }
+	if (idx == partition)
+		steps_a = 0;
+	else
+		steps_a = length - idx;
+	if (next == partition - 1)
+		steps_b = 0;
+	else
+		steps_b = next + 1;
 	rot.type = 1;
 	if (steps_a < steps_b)
 		rot.cost = steps_b;
@@ -76,14 +68,10 @@ struct s_rots	check_rrarb(int *list, int length, int partition, int idx)
 	int				next;
 
 	next = get_next(list, partition, list[idx]);
-  if (idx == partition)
-  {
-    steps_a = 0;
-  }
-  else
-  {
-	  steps_a = length - idx;
-  }
+	if (idx == partition)
+		steps_a = 0;
+	else
+		steps_a = length - idx;
 	steps_b = partition - next - 1;
 	if (steps_b < 0)
 		steps_b = 0;
@@ -103,14 +91,14 @@ struct s_rots	check_rarrb(int *list, int partition, int idx)
 
 	next = get_next(list, partition, list[idx]);
 	steps_a = idx - partition;
-  if (next == partition - 1)
-  {
-    steps_b = 0;
-  }
-  else
-  {
-	  steps_b = next + 1;
-  }
+	if (next == partition - 1)
+	{
+		steps_b = 0;
+	}
+	else
+	{
+		steps_b = next + 1;
+	}
 	rot.type = 2;
 	rot.cost = steps_a + steps_b;
 	rot.steps_a = steps_a;

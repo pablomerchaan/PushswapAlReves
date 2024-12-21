@@ -6,7 +6,7 @@
 /*   By: paperez- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 18:23:35 by paperez-          #+#    #+#             */
-/*   Updated: 2024/12/16 14:24:46 by paperez-         ###   ########.fr       */
+/*   Updated: 2024/12/19 14:35:56 by paperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,5 @@ void	emit_from_rots(struct s_rots rot)
 		do_print (5, 9, rot.steps_a, rot.steps_b);
 	if (rot.type == 3)
 		do_print (8, 6, rot.steps_a, rot.steps_b);
-
-  emit_step(1);
+	emit_step(1);
 }

@@ -1,6 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   args.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: paperez- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/19 14:43:01 by paperez-          #+#    #+#             */
+/*   Updated: 2024/12/19 14:43:46 by paperez-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswap.h"
 
-struct s_intsaux	completeints(struct s_intsaux ints, struct s_l list, struct s_rots goodrot)
+struct s_intsaux	completeints(struct s_intsaux ints,
+			struct s_l list, struct s_rots goodrot)
 {
 	ints.steps += goodrot.cost + 1;
 	ints.i = list.partition;
@@ -44,12 +57,12 @@ int	solveargc(int argc, char **argv)
 	return (argc);
 }
 
-struct s_l	makelist(int argc, char **argvtmp, struct s_l list, struct s_minmax m)
+struct s_l	makelist(int argc, char **argvtmp,
+			struct s_l list, struct s_minmax m)
 {
-	int cum;
 	while (list.length < argc)
 	{
-		if (ft_atoi(argvtmp[list.length]) == '\0')
+		if (checkerrors(argvtmp[list.length]) == 1)
 		{
 			ft_printf("Error\n");
 			list.list = NULL;
@@ -62,13 +75,6 @@ struct s_l	makelist(int argc, char **argvtmp, struct s_l list, struct s_minmax m
 			m.min = list.list[list.length];
 		list.length++;
 	}
-cum = 0;
-  while (cum < list.length) {
-    printf("%i ", list.list[cum]);
-    cum++;
-  }
-  printf("\n");
-	//list = addmin(list, m.min);
 	if (checkrepetition(list) == NULL)
 	{
 		ft_printf("Error\n");
